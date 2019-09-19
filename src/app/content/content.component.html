@@ -1,0 +1,11 @@
+<div class="container mt-3 ">
+  <div class="row justify-content-center">
+    <div class="card border border-warning" style="width: 18rem;" *ngFor="let client of clients">
+      <div class="card-body">
+        <h5 class="card-title">{{client.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{"Age: "+client.age+" "+"Gender: "+client.gender}}</h6>
+        <p class="card-text">{{"Company: "+client.company+"\n"+client.email+"\n"+client.phone+"\n"+client.address}}</p>
+      </div>
+    </div>
+  </div>
+</div>
