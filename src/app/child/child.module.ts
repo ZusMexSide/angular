@@ -6,7 +6,9 @@ import { UnoComponent } from './uno/uno.component';
 import { DosComponent } from './dos/dos.component';
 
 const subRoutes: Routes= [
-{path:'', component:Page1Component}
+{path:'', component: Page1Component},
+{path:'uno', component: UnoComponent},
+{path:'dos', component: DosComponent}
 ];
 
 @NgModule({

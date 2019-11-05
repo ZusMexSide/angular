@@ -9,7 +9,7 @@ export class ClientDataSourceService {
   constructor(private http: HttpClient) { 
 
   }
-  getClients():any{
+  getClients(): any{
     return this.http.get('http://localhost:3000/clients');
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientDataSourceService } from '../client-data-source.service';
 import { ClientRepositoryService } from '../client-repository.service';
 @Component({
   selector: 'app-content',

@@ -1,0 +1,68 @@
+  <div class="container-fluid mt-3 ml-5">
+    <div class="row">
+      <div class="col-12 justify-items-center">
+        <div id="mapId" style="height: 300px; width: 50%;"></div>
+      </div>
+      <div class="col-12">
+        <form [formGroup]="place" (ngSubmit)="search(place.value)">  
+            <div>
+              <label for="latitude">
+                Latitude:
+              </label>
+              <input type="text" id="latitude" formControlName="latitude">
+            </div>
+            <div>
+              <label for="longitude">
+                Longitude:
+              </label>
+              <input type="text" id="longitude" formControlName="longitude">
+            </div>
+            <button type="submit">Search...</button>
+          </form> 
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-3 ml-5">
+      <div class="row"> 
+        <div class="card border border-warning m-3" style="width: 18rem;" *ngFor="let weath of weather">
+            <div *ngIf="(weath.time*1000)<(now); else elseBlock">
+                <div class="card-body bg-warning">
+                    <h5 class="card-title">{{weath.time *1000 | date}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{weath.summary}}</h6>
+                    <p class="card-text" [ngSwitch]="weath.icon">
+                      <i class="wi wi-day-sunny" *ngSwitchCase="'clear-day'"></i>
+                      <i class="wi wi-night-clear" *ngSwitchCase="'clear-night'"></i>
+                      <i class="wi wi-rain" *ngSwitchCase="'rain'"></i>
+                      <i class="wi wi-snow" *ngSwitchCase="'snow'"></i>
+                      <i class="wi wi-sleet" *ngSwitchCase="'sleet'"></i>
+                      <i class="wi wi-windy" *ngSwitchCase="'wind'"></i>
+                      <i class="wi wi-cloudy" *ngSwitchCase="'cloudy'"></i>
+                      <i class="wi wi-day-cloudy" *ngSwitchCase="'partly-cloudy-day'"></i>
+                      <i class="wi wi-night-partly-cloudy" *ngSwitchCase="'partly-cloudy-night'"></i>
+                      <span *ngSwitchDefault>not found</span>
+                    </p>
+                  </div>
+            </div>
+            <ng-template #elseBlock>
+                <div class="card-body">
+                    <h5 class="card-title">{{weath.time *1000 | date}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{weath.summary}}</h6>
+                    <p class="card-text" [ngSwitch]="weath.icon">
+                      <i class="wi wi-day-sunny" *ngSwitchCase="'clear-day'"></i>
+                      <i class="wi wi-night-clear" *ngSwitchCase="'clear-night'"></i>
+                      <i class="wi wi-rain" *ngSwitchCase="'rain'"></i>
+                      <i class="wi wi-snow" *ngSwitchCase="'snow'"></i>
+                      <i class="wi wi-sleet" *ngSwitchCase="'sleet'"></i>
+                      <i class="wi wi-windy" *ngSwitchCase="'wind'"></i>
+                      <i class="wi wi-cloudy" *ngSwitchCase="'cloudy'"></i>
+                      <i class="wi wi-day-cloudy" *ngSwitchCase="'partly-cloudy-day'"></i>
+                      <i class="wi wi-night-partly-cloudy" *ngSwitchCase="'partly-cloudy-night'"></i>
+                      <span *ngSwitchDefault>not found</span>
+                    </p>
+                  </div>
+            </ng-template>
+          
+        </div>
+      </div>
+    </div>
+  

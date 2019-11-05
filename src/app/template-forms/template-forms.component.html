@@ -1,0 +1,50 @@
+<div class="container">
+    <form name="form" #f="ngForm" >
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input class="form-control" type="text" id="name" name="name"
+            [(ngModel)]="data.name" #name="ngModel" required minlength="3" pattern="[a-zA-Z ]*">
+            <div *ngIf="name.invalid || (name.dirty && name.touched)">
+                <div *ngIf="name.hasError('required')" class="alert alert-danger">
+                    NAME IS REQUIRED
+                </div>
+                <div *ngIf="name.hasError('minlength')" class="alert alert-danger">
+                    NAME MUST BE AT LEAST 3 CHARACTER LONG
+                </div>
+                <div *ngIf="name.hasError('pattern')" class="alert alert-danger">
+                        JUST ADMIT LETTERS
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname">Last Name:</label>
+            <input class="form-control" type="text" id="lastname" name="lastname"
+            [(ngModel)]="data.lastname" #lastname="ngModel" required minlength="3" pattern="[a-zA-Z ]*">
+            <div *ngIf="lastname.invalid || (lastname.dirty && lastname.touched)">
+                <div *ngIf="lastname.hasError('required')" class="alert alert-danger">
+                    LAST NAME IS REQUIRED
+                </div>
+                <div *ngIf="lastname.hasError('minlength')" class="alert alert-danger">
+                    LAST NAME MUST BE AT LEAST 3 CHARACTER LONG
+                </div>
+                <div *ngIf="lastname.hasError('pattern')" class="alert alert-danger">
+                        JUST ADMIT LETTERS
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email"
+            [(ngModel)]="data.email" #email="ngModel" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+            <div *ngIf="email.invalid || (email.dirty && email.touched)">
+                <div *ngIf="email.hasError('required')" class="alert alert-danger">
+                        EMAIL IS REQUIRED
+                </div>
+                <div *ngIf="email.hasError('pattern')" class="alert alert-danger">
+                        EMAIL IS INVALID
+                </div>
+            </div> 
+        </div>
+        <button type="submit" (click)="onSubmit(data)" [disabled]="!f.valid">SEND</button>
+    </form>
+</div>
